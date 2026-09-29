@@ -8,7 +8,7 @@ import { Producto } from '../models/producto';
 })
 export class ProductoService {
 
-  private apiUrl = 'https://electronica360api-5ti69rjye-electronica360.vercel.app/servicios';
+  private apiUrl = 'https://electronica360api.vercel.app/servicios';
 
   constructor(private http: HttpClient) {}
 

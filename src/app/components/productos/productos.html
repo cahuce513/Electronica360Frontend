@@ -1,0 +1,143 @@
+<form (ngSubmit)="guardarProducto()">
+
+  <h2 class="form-title">Gestión de Productos</h2>
+
+  <div>
+    <label for="nombre">Nombre:</label>
+
+    <input
+      id="nombre"
+      type="text"
+      [(ngModel)]="nuevoProducto.nombre"
+      name="nombre"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="categoria">Categoría:</label>
+
+    <input
+      id="categoria"
+      type="text"
+      [(ngModel)]="nuevoProducto.categoria"
+      name="categoria"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="precio">Precio:</label>
+
+    <input
+      id="precio"
+      type="number"
+      [(ngModel)]="nuevoProducto.precio"
+      name="precio"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="stock">Stock:</label>
+
+    <input
+      id="stock"
+      type="number"
+      [(ngModel)]="nuevoProducto.stock"
+      name="stock"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="marca">Marca:</label>
+
+    <input
+      id="marca"
+      type="text"
+      [(ngModel)]="nuevoProducto.marca"
+      name="marca"
+      required
+    />
+  </div>
+
+  <button type="submit">
+    {{ productoEditandoId ? 'Actualizar producto' : 'Guardar producto' }}
+  </button>
+
+  @if (productoEditandoId) {
+
+    <button
+      type="button"
+      (click)="cancelarEdicion()"
+    >
+      Cancelar
+    </button>
+
+  }
+
+</form>
+
+<hr>
+
+<h2 class="table-title">Productos Electrónica 360</h2>
+
+<p>Total de productos: {{ productos.length }}</p>
+
+<table border="1">
+
+  <thead>
+
+    <tr>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Marca</th>
+      <th>Acciones</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    @for (producto of productos; track producto._id) {
+
+      <tr>
+
+        <td>{{ producto.nombre }}</td>
+
+        <td>{{ producto.categoria }}</td>
+
+        <td>{{ producto.precio }}</td>
+
+        <td>{{ producto.stock }}</td>
+
+        <td>{{ producto.marca }}</td>
+
+        <td>
+
+          <button
+            type="button"
+            (click)="editarProducto(producto)"
+          >
+            Editar
+          </button>
+
+          <button
+            type="button"
+            (click)="eliminarProducto(producto)"
+          >
+            Eliminar
+          </button>
+
+        </td>
+
+      </tr>
+
+    }
+
+  </tbody>
+
+</table>
